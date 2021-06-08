@@ -67,7 +67,7 @@ void MainWindow::on_calendarWidget_1_clicked(const QDate &date)
     d1 = ui->calendarWidget_1->selectedDate();
     QString qstr = d1.toString();
     date_from = qstr.toStdString();
-
+    //std::cout << date_from;
 
 }
 
@@ -77,14 +77,14 @@ void MainWindow::on_calendarWidget_2_clicked(const QDate &date)
     d2 = ui->calendarWidget_2->selectedDate();
     QString qstr2 = d2.toString();
     date_to = qstr2.toStdString();
-
+    //std::cout << date_to;
 }
 
 void MainWindow::on_comboBox_currentIndexChanged(const QString &arg1)
 {
     QString cntr = ui->comboBox->currentText();
     country = cntr.toStdString();
-
+    //std::cout<<country;
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -249,7 +249,7 @@ void MainWindow::on_actionLoad_data_from_csv_triggered()
     std::string fname = filename.toStdString();
     fillMap(covid, countries, fname);
     std::set<std::string>::iterator it;
-
+    //for(it = countries.begin(); it != countries.end(); it++){
     for(auto &item : countries){
         QString str = QString::fromStdString(item);
         ui->comboBox->addItem(str);

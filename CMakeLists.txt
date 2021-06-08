@@ -59,4 +59,3 @@ else()
 endif()
 
 target_link_libraries(CovidData PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Charts)
-

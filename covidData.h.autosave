@@ -81,7 +81,6 @@ void fillMap(std::vector<covidData>& v, std::set<std::string>& c, std::string fi
     }
     file.close();
     std::sort(v.rbegin(), v.rend(), comp);
-    std::cout << max_c << ' ' << max_d;
     return;
 }
 
