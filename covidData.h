@@ -5,6 +5,8 @@
 #include <sstream>
 #include <fstream>
 #include <iostream>
+#include <set>
+#include <iterator>
 
 class covidData{
 public:
@@ -48,24 +50,37 @@ public:
 
 };
 
-void fillMap(std::vector<covidData>& v){
+bool comp (covidData a, covidData b){
+    if (a.year != b.year)
+        return a.year > b.year;
+    else{
+        if (a.month != b.month)
+            return a.month > b.month;
+    }
+    return a.day > b.day;
+}
+void fillMap(std::vector<covidData>& v, std::set<std::string>& c, std::string filename){
     std::ifstream file;
-    file.open("/Users/darlinkennedy/Downloads/covid.csv");
+    file.open(filename);
 
     std::string line;
     std::string word;
+    int max_d, max_c;
     std::stringstream ss;
     std::vector<std::string>data;
     getline(file, line);
+    std::vector<int> min_data = {0, 0, 0};
     std::string f;
     while (file.good()){
         getline(file, line);
         data = covidData::split(line, ';');
+        c.insert(data[5]);
         covidData c1(stoi(data[0]), stoi(data[1]), stoi(data[2]), stoi(data[3]), stoi(data[4]), data[5],
                 data[6], stoi(data[7]), data[8], stod(data[9]));
         v.push_back(c1);
     }
     file.close();
+    std::sort(v.rbegin(), v.rend(), comp);
     return;
 }
 
