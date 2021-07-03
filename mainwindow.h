@@ -12,7 +12,12 @@
 #include <QComboBox>
 #include <QPushButton>
 #include <QtCharts>
-#include <QPixmap>
+#include <QTableView>
+#include "model.h"
+#include "covidData.h"
+
+
+
 
 
 
@@ -28,6 +33,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
 
 private slots:
 
@@ -52,7 +58,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QStandardItemModel *model;
+
     QCalendarWidget *calendar;
     QLabel *label;
     QCheckBox *box;
@@ -61,6 +67,10 @@ private:
     QPushButton *button;
     QGraphicsView *graphic;
     QMenuBar *menubar;
+    myTableModel *myModel = new myTableModel();
+    covidInfo info;
+
+
 
 
 };
