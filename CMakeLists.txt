@@ -36,10 +36,10 @@ set(PROJECT_SOURCES
         mainwindow.h
         mainwindow.ui
         covidData.h
-        computingData.h
+        model.h
+        model.cpp
+        covidData.cpp
         resourse.qrc
-
-
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -59,3 +59,4 @@ else()
 endif()
 
 target_link_libraries(CovidData PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Charts)
+
